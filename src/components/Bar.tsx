@@ -5,11 +5,15 @@ export const Bar = (props: { value: number }) => {
   console.log(props.value);
   console.log(divHeight);
 
-  const divClasses = `bg-white mx-1 px-1 w-8 h-[${divHeight}%] block`;
+  const divStyle = `${divHeight}%`;
 
   return (
-    <div className={divClasses}>
-      <p className="text-black text-xs text-center">{props.value}</p>
+    <div>
+      <p className="text-white text-xs text-center">{props.value}</p>
+      <div
+        className="bg-white mx-1 px-1 w-8"
+        style={{ height: divStyle }}
+      ></div>
     </div>
   );
 };

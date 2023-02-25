@@ -21,9 +21,9 @@ export const Visualization = () => {
   }
 
   return (
-    <div className="py-10 flex mx-auto">
+    <div className="py-10 max-h-[50vh] h-[50vh] flex mx-auto">
       {array!.map((val, index) => (
-        <div key={index} className="flex flex-row h-[50vh] block">
+        <div key={index} className="flex flex-row ">
           <Bar key={index} value={val} />
         </div>
       ))}
