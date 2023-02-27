@@ -2,8 +2,8 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <div className="flex w-full fixed inset-x-0 bottom-0 justify-center items-center">
-      <footer className="p-4 w-11/12 border-t border-white shadow md:flex md:items-center md:justify-between">
+    <div className="flex flex-row w-full bottom-0 justify-center items-center border-t border-white">
+      <footer className=" flex flex-row px-2 py-1 w-11/12 shadow items-center justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           Made by{" "}
           <a href="https://read.cv/faizanraso" className="underline">
@@ -11,7 +11,7 @@ export const Footer = () => {
           </a>{" "}
           👨🏽‍💻
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex items-center text-sm text-gray-500 dark:text-gray-400 ">
           <li>
             <a
               href="https://github.com/faizanraso/Sorting-Visualizer"
