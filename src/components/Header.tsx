@@ -3,7 +3,7 @@ import githubIcon from "../assets/github-mark.svg";
 
 function Header() {
   return (
-    <header className="flex w-full sm:w-11/12 mt-5 border-b pb-1 sm:px-4 px-2 items-center justify-between font-mono">
+    <header className="flex w-full mt-5 border-b pb-1 sm:px-4 px-2 items-center justify-between font-mono">
       <a href="/" className="flex text-3xl">
         <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
           <path d="M12 0H4a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V2a2 2 0 00-2-2zm-2 11.5v-6a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v6a.5.5 0 01-.5.5h-1a.5.5 0 01-.5-.5zm-2.5.5a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v4a.5.5 0 01-.5.5h-1zm-3 0a.5.5 0 01-.5-.5v-2a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v2a.5.5 0 01-.5.5h-1z" />

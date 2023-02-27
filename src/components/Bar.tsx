@@ -1,19 +1,13 @@
 import React from "react";
 
-export const Bar = (props: { value: number }) => {
-  const divHeight = Math.floor((props.value / 500) * 100);
-  console.log(props.value);
-  console.log(divHeight);
-
-  const divStyle = `${divHeight}%`;
+export const Bar = (props: { color: string | undefined; value: number }) => {
+  const barHeight = Math.floor((props.value / 500) * 100);
+  const barStyle = `${barHeight}%`;
 
   return (
-    <div>
-      <p className="text-white text-xs text-center">{props.value}</p>
-      <div
-        className="bg-white mx-1 px-1 w-8"
-        style={{ height: divStyle }}
-      ></div>
-    </div>
+    <div
+      className="flex mx-1 px-0.5 sm:w-px rounded-sm inline-block"
+      style={{ height: barStyle, backgroundColor: props.color }}
+    ></div>
   );
 };
