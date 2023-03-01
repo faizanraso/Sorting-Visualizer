@@ -1,14 +1,15 @@
 // https://www.material-tailwind.com/docs/react/select
-
 import React, { useEffect, useState } from "react";
+
 import { Bar } from "./Bar";
 import { Description } from "./Description";
+import { bubbleSort } from "../algorithms/BubbleSort";
 
 export const Visualization = () => {
   const [array, setArray] = useState([] as number[]);
   const [arrayLength, setArrayLength] = useState<Number>(30);
   const [isRunning, setisRunning] = useState<boolean | undefined>(false);
-  const [algorithm, setAlgorithm] = useState<string | undefined>("test");
+  const [algorithm, setAlgorithm] = useState<string | undefined>("bubble-sort");
 
   function setBarsArray() {
     const newArray: number[] = [];
@@ -26,35 +27,30 @@ export const Visualization = () => {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  function runVisualizer() {
+  async function runVisualizer() {
     setisRunning(true);
     switch (algorithm) {
       case "bubble-sort":
-        bubbleSort();
+        await bubbleSort(array);
+        setisRunning(false);
         break;
       case "insertion-sort":
         insertionSort();
+        setisRunning(false);
         break;
       case "quick-sort":
         quickSort();
+        setisRunning(false);
         break;
       case "selection-sort":
         selectionSort();
+        setisRunning(false);
         break;
       default:
+        setisRunning(false);
         break;
     }
   }
-
-  const bubbleSort = async () => {
-    let arr = array;
-    var sorted = false;
-
-    while(!sorted){
-      
-    }
-
-  };
 
   const insertionSort = () => {};
 
@@ -69,9 +65,10 @@ export const Visualization = () => {
           <select
             id="algoritms"
             disabled={isRunning}
+            onChange={(e) => setAlgorithm(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option selected>Select an algorithm</option>
+            <option>Select an algorithm</option>
             <option value="bubble-sort">Bubble Sort</option>
             <option value="inersetion-sort">Insertion Sort</option>
             <option value="quick-sort">Quick Sort</option>
@@ -113,15 +110,20 @@ export const Visualization = () => {
               viewBox="0 0 1920 1920"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M175 .024V1920l1570.845-959.927z" fill-rule="evenodd" />
+              <path d="M175 .024V1920l1570.845-959.927z" fillRule="evenodd" />
             </svg>
           </button>
         </div>
       </div>
-      <div className="py-8 h-[50vh] flex justify-center ">
+      <div className="py-8 h-[50vh] flex justify-center">
         {array!.map((val, index) => (
           <div key={index} className="">
-            <Bar id={index} key={index} value={val} color="white" />
+            <Bar
+              indexID={index.toString()}
+              key={index}
+              value={val}
+              color="white"
+            />
           </div>
         ))}
       </div>

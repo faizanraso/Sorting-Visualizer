@@ -1,7 +1,7 @@
 import React from "react";
 
 export const Bar = (props: {
-  id: string | number | undefined;
+  indexID: string | undefined;
   color: string | undefined;
   value: number;
 }) => {
@@ -10,8 +10,8 @@ export const Bar = (props: {
 
   return (
     <div
-      id={props.id}
-      className="flex mx-1 px-0.5 sm:w-px rounded-sm inline-block"
+      id={`bar-${props.indexID}`}
+      className="flex mx-1 px-0.5 sm:w-px rounded-sm inline-block bar"
       style={{ height: barStyle, backgroundColor: props.color }}
     ></div>
   );
