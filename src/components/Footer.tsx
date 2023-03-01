@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <div className="flex flex-row w-full bottom-0 justify-center items-center border-t border-white">
+    <div className="flex flex-row w-full bottom-0 inset-x-0 justify-center items-center border-t border-white mt-auto">
       <footer className=" flex flex-row px-2 py-1 w-11/12 shadow items-center justify-between">
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           Made by{" "}

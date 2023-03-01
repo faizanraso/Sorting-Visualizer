@@ -28,7 +28,39 @@ export const Visualization = () => {
 
   function runVisualizer() {
     setisRunning(true);
+    switch (algorithm) {
+      case "bubble-sort":
+        bubbleSort();
+        break;
+      case "insertion-sort":
+        insertionSort();
+        break;
+      case "quick-sort":
+        quickSort();
+        break;
+      case "selection-sort":
+        selectionSort();
+        break;
+      default:
+        break;
+    }
   }
+
+  const bubbleSort = async () => {
+    let arr = array;
+    var sorted = false;
+
+    while(!sorted){
+      
+    }
+
+  };
+
+  const insertionSort = () => {};
+
+  const quickSort = () => {};
+
+  const selectionSort = () => {};
 
   return (
     <div className="w-full pt-5">
@@ -89,7 +121,7 @@ export const Visualization = () => {
       <div className="py-8 h-[50vh] flex justify-center ">
         {array!.map((val, index) => (
           <div key={index} className="">
-            <Bar key={index} value={val} color="white" />
+            <Bar id={index} key={index} value={val} color="white" />
           </div>
         ))}
       </div>
