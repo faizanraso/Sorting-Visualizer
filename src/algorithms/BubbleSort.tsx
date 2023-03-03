@@ -1,7 +1,11 @@
-//perform bubble sort, swap bars accordingly
-export const bubbleSort = async (arr: number[]) => {
+import { GetSpeed } from "./GetSpeed";
+
+export const bubbleSort = async (arr: number[], speedLevel: number) => {
   var swapped = false;
   var greenSet = false;
+  const delay = GetSpeed(speedLevel);
+  console.log(speedLevel);
+  console.log(delay);
 
   while (true) {
     swapped = false;
@@ -13,7 +17,7 @@ export const bubbleSort = async (arr: number[]) => {
       if (bar1 && bar2) {
         bar1.style.backgroundColor = "#2AA7E1";
         bar2.style.backgroundColor = "#2AA7E1";
-        await new Promise((r) => setTimeout(r, 50));
+        await new Promise((r) => setTimeout(r, delay));
       }
 
       if (arr[i] > arr[i + 1]) {
@@ -26,7 +30,7 @@ export const bubbleSort = async (arr: number[]) => {
           bar2.style.height = `${Math.floor((arr[i + 1] / 500) * 100)}%`;
           bar1.style.backgroundColor = "#ffa500";
           bar2.style.backgroundColor = "#ffa500";
-          await new Promise((r) => setTimeout(r, 50));
+          await new Promise((r) => setTimeout(r, delay));
         }
         swapped = true;
       }
@@ -42,7 +46,7 @@ export const bubbleSort = async (arr: number[]) => {
         "bar"
       ) as HTMLCollectionOf<HTMLElement>;
       for (var j = 0; j < bars.length; j++) {
-        bars[j].style.backgroundColor = "green";
+        bars[j].style.backgroundColor = "#00ff00";
       }
       break;
     }
