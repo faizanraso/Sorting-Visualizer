@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 
 import { Bar } from "./Bar";
 import { Description } from "./Description";
-import { bubbleSort } from "../algorithms/BubbleSort";
+import { BubbleSort } from "../algorithms/BubbleSort";
+import { InsertionSort } from "../algorithms/InsertionSort";
+import { QuickSort } from "../algorithms/QuickSort";
+import { SelectionSort } from "../algorithms/SelectionSort";
 import { GetDescriptionData } from "./GetDescriptionData";
 
 export const Visualization = () => {
@@ -18,18 +21,18 @@ export const Visualization = () => {
     string | undefined
   >();
 
-  function setBarsArray() {
+  const setBarsArray = () => {
     const newArray: number[] = [];
     for (var i = 0; i < arrayLength; i++) {
       newArray.push(randomNumber(5, 500));
     }
     setArray(newArray);
-  }
+  };
 
   useEffect(() => {
     setBarsArray();
     resetBarsColour();
-  }, [arrayLength]);
+  }, [arrayLength, sortSpeed]);
 
   useEffect(() => {
     const algorithmData = GetDescriptionData(algorithm);
@@ -39,36 +42,36 @@ export const Visualization = () => {
     resetBarsColour();
   }, [algorithm]);
 
-  function randomNumber(min: number, max: number) {
+  const randomNumber = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min)) + min;
-  }
+  };
 
-  function resetBarsColour() {
+  const resetBarsColour = () => {
     const bars = document.getElementsByClassName(
       "bar"
     ) as HTMLCollectionOf<HTMLElement>;
     for (var j = 0; j < bars.length; j++) {
       bars[j].style.backgroundColor = "white";
     }
-  }
+  };
 
-  async function runVisualizer() {
+  const runVisualizer = async () => {
     setisRunning(true);
     switch (algorithm) {
       case "bubble-sort":
-        await bubbleSort(array, sortSpeed);
+        await BubbleSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "insertion-sort":
-        insertionSort();
+        InsertionSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "quick-sort":
-        quickSort();
+        QuickSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "selection-sort":
-        selectionSort();
+        SelectionSort(array, sortSpeed);
         setisRunning(false);
         break;
       default:
@@ -76,23 +79,17 @@ export const Visualization = () => {
         setisRunning(false);
         break;
     }
-  }
-
-  const insertionSort = () => {};
-
-  const quickSort = () => {};
-
-  const selectionSort = () => {};
+  };
 
   return (
     <div className="w-full pt-5">
-      <div className="flex flex-col md:flex-row items-center w-full justify-center items-center pt-5 space-x-8">
-        <div className="algorithm-selector mt-3 md:mt-0">
+      <div className="flex flex-col md:flex-row w-full justify-center items-center pt-5 ">
+        <div className="algorithm-selector sm:mx-auto md:mx-0 mt-5 md:mt-0">
           <select
             id="algoritms"
             disabled={isRunning}
             onChange={(e) => setAlgorithm(e.target.value)}
-            className="m-auto bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option>Select an algorithm</option>
             <option value="bubble-sort">Bubble Sort</option>
@@ -101,7 +98,8 @@ export const Visualization = () => {
             <option value="selection-sort">Selection Sort</option>
           </select>
         </div>
-        <div className="length-slider md:ml-5 text-center mt-3 md:mt-0">
+
+        <div className="length-slider md:ml-5 text-center mt-5 md:mt-0">
           <label htmlFor="length-slider p-2.5">
             {" "}
             <span className="text-xs font-semibold block mb-1">
@@ -120,7 +118,7 @@ export const Visualization = () => {
             className={"w-[175px] h-2.5 bg-gray-50 dark:bg-gray-700"}
           />
         </div>
-        <div className="length-slider md:ml-5 text-center mt-3 md:mt-0">
+        <div className="length-slider md:ml-5 text-center mt-5 md:mt-0">
           <label htmlFor="length-slider p-2.5">
             {" "}
             <span className="text-xs font-semibold block mb-1">
@@ -139,7 +137,7 @@ export const Visualization = () => {
             className={"w-[175px] h-2.5 bg-gray-50 dark:bg-gray-700"}
           />
         </div>
-        <div className="md:ml-5 mt-3 md:mt-0">
+        <div className="mt-5 md:ml-5 md:mt-0">
           <button
             onClick={runVisualizer}
             disabled={isRunning}
@@ -160,7 +158,7 @@ export const Visualization = () => {
           </button>
         </div>
       </div>
-      <div className="py-8 mt-6 h-[50vh] flex justify-center">
+      <div className="py-4 mt-6 h-[50vh] flex justify-center">
         {array!.map((val, index) => (
           <div key={index} className="">
             <Bar
@@ -172,7 +170,7 @@ export const Visualization = () => {
           </div>
         ))}
       </div>
-      <div className="flex w-full mx-auto justify-center items-center">
+      <div className="flex w-full mx-auto justify-center items-center mt-4">
         <Description
           algorithm={algorithmTitle}
           description={algorithmDescription}

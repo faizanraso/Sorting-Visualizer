@@ -25,7 +25,7 @@ export const Description = (props: {
       >
         <CodeMirror
           value={props.code}
-          height="350px"
+          height="300px"
           extensions={[javascript({ jsx: true })]}
           theme={githubDark}
           basicSetup={true}
