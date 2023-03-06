@@ -8,8 +8,6 @@ Future plans:
 - Add code snippets for the every algorithm
 
 
-Screenshots:
+Screenshot:
 
-<img width="1512" alt="Screenshot 2023-03-05 at 9 56 23 PM" src="https://user-images.githubusercontent.com/59986120/223009182-0d8ef9d1-c698-4e62-89cc-0eb0d6fa7652.png">
-
-<img width="1512" alt="Screenshot 2023-03-05 at 9 56 59 PM" src="https://user-images.githubusercontent.com/59986120/223009190-416a66de-b095-4767-8fb9-fcb11cdb880b.png">
+<img width="1512" alt="Screenshot 2023-03-05 at 9 58 04 PM" src="https://user-images.githubusercontent.com/59986120/223009308-274f0a98-35f6-46af-8494-63a13afc5e85.png">
