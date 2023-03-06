@@ -30,7 +30,7 @@ export const Description = (props: {
   };
 
   return (
-    <div className="description-section flex flex-col md:flex-row w-10/12 pb-10 font-mono ">
+    <div className="description-section flex flex-col md:flex-row w-11/12 md:w-10/12 pb-10 font-mono ">
       <div className="description w-full md:w-6/12 bg-zinc-900 border border-zinc-800 p-3">
         <h1 className="font-bold text-lg text-center">{getHeader()}</h1>
         {getDescription()}
