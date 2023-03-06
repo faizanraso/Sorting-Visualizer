@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import { Bar } from "./Bar";
 import { Description } from "./Description";
 import { BubbleSort } from "../algorithms/BubbleSort";
-import { InsertionSort } from "../algorithms/InsertionSort";
-import { QuickSort } from "../algorithms/QuickSort";
 import { SelectionSort } from "../algorithms/SelectionSort";
 import { GetDescriptionData } from "./GetDescriptionData";
 
@@ -63,11 +61,11 @@ export const Visualization = () => {
         setisRunning(false);
         break;
       case "insertion-sort":
-        await InsertionSort(array, sortSpeed);
+        // await InsertionSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "quick-sort":
-        await QuickSort(array, sortSpeed);
+        // await QuickSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "selection-sort":
@@ -93,9 +91,9 @@ export const Visualization = () => {
           >
             <option>Select an algorithm</option>
             <option value="bubble-sort">Bubble Sort</option>
-            <option value="insertion-sort">Insertion Sort</option>
+            {/* <option value="insertion-sort">Insertion Sort</option> */}
             <option value="quick-sort">Quick Sort</option>
-            <option value="selection-sort">Selection Sort</option>
+            {/* <option value="selection-sort">Selection Sort</option> */}
           </select>
         </div>
 
