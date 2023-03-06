@@ -63,15 +63,15 @@ export const Visualization = () => {
         setisRunning(false);
         break;
       case "insertion-sort":
-        InsertionSort(array, sortSpeed);
+        await InsertionSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "quick-sort":
-        QuickSort(array, sortSpeed);
+        await QuickSort(array, sortSpeed);
         setisRunning(false);
         break;
       case "selection-sort":
-        SelectionSort(array, sortSpeed);
+        await SelectionSort(array, sortSpeed);
         setisRunning(false);
         break;
       default:

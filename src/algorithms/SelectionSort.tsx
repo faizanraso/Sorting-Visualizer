@@ -54,6 +54,4 @@ export const SelectionSort = async (arr: number[], speedLevel: number) => {
   for (var k = 0; k < bars.length; k++) {
     bars[k].style.backgroundColor = "#00ff00";
   }
-
-  console.log(arr);
 };
