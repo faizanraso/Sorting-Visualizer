@@ -49,7 +49,7 @@ export const SelectionSort = async (arr: number[], speedLevel: number) => {
   }
 
   const bars = document.getElementsByClassName(
-    "bars"
+    "bar"
   ) as HTMLCollectionOf<HTMLElement>;
   for (var k = 0; k < bars.length; k++) {
     bars[k].style.backgroundColor = "#00ff00";

@@ -5,7 +5,6 @@ import { Bar } from "./Bar";
 import { Description } from "./Description";
 import { BubbleSort } from "../algorithms/BubbleSort";
 import { SelectionSort } from "../algorithms/SelectionSort";
-import { GetDescriptionData } from "./GetDescriptionData";
 
 export const Visualization = () => {
   const [array, setArray] = useState([] as number[]);
@@ -13,11 +12,6 @@ export const Visualization = () => {
   const [isRunning, setisRunning] = useState<boolean | undefined>(false);
   const [algorithm, setAlgorithm] = useState<string | undefined>();
   const [sortSpeed, setSortSpeed] = useState<number>(2);
-  const [algorithmTitle, setAlgorithmTitle] = useState<string | undefined>();
-  const [algorithmCode, setAlgorithmCode] = useState<string | undefined>();
-  const [algorithmDescription, setAlgorithmDescription] = useState<
-    string | undefined
-  >();
 
   const setBarsArray = () => {
     const newArray: number[] = [];
@@ -33,10 +27,6 @@ export const Visualization = () => {
   }, [arrayLength, sortSpeed]);
 
   useEffect(() => {
-    const algorithmData = GetDescriptionData(algorithm);
-    setAlgorithmTitle(algorithmData[0]);
-    setAlgorithmDescription(algorithmData[1]);
-    setAlgorithmCode(algorithmData[2]);
     resetBarsColour();
   }, [algorithm]);
 
@@ -60,14 +50,6 @@ export const Visualization = () => {
         await BubbleSort(array, sortSpeed);
         setisRunning(false);
         break;
-      case "insertion-sort":
-        // await InsertionSort(array, sortSpeed);
-        setisRunning(false);
-        break;
-      case "quick-sort":
-        // await QuickSort(array, sortSpeed);
-        setisRunning(false);
-        break;
       case "selection-sort":
         await SelectionSort(array, sortSpeed);
         setisRunning(false);
@@ -89,11 +71,9 @@ export const Visualization = () => {
             onChange={(e) => setAlgorithm(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option>Select an algorithm</option>
+            <option value="">Select an algorithm</option>
             <option value="bubble-sort">Bubble Sort</option>
-            {/* <option value="insertion-sort">Insertion Sort</option> */}
-            <option value="quick-sort">Quick Sort</option>
-            {/* <option value="selection-sort">Selection Sort</option> */}
+            <option value="selection-sort">Selection Sort</option>
           </select>
         </div>
 
@@ -169,11 +149,7 @@ export const Visualization = () => {
         ))}
       </div>
       <div className="flex w-full mx-auto justify-center items-center mt-4">
-        <Description
-          algorithm={algorithmTitle}
-          description={algorithmDescription}
-          code={algorithmCode}
-        />
+        <Description algorithm={algorithm} />
       </div>
     </div>
   );
