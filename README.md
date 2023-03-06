@@ -1,6 +1,7 @@
 # Sorting-Visualizer
 
 Created an algorithm visualizer using React, TypeScript and Tailwind CSS - https://algos-seven.vercel.app/
+<br/>
 It currently supports Bubble Sort and Selection Sort, however, more algorithms will be added in the future.
 
 Future plans:
