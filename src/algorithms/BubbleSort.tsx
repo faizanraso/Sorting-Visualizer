@@ -1,18 +1,15 @@
 import { GetSpeed } from "./GetSpeed";
 
-export const bubbleSort = async (arr: number[], speedLevel: number) => {
+export const BubbleSort = async (arr: number[], speedLevel: number) => {
+  var bar1, bar2;
   var swapped = false;
-  var greenSet = false;
   const delay = GetSpeed(speedLevel);
-  console.log(speedLevel);
-  console.log(delay);
 
   while (true) {
     swapped = false;
     for (var i = 0; i < arr.length; i++) {
-      const bar1 = document.getElementById(`bar-${i}`);
-      const bar2 = document.getElementById(`bar-${i + 1}`);
-      greenSet = false;
+      bar1 = document.getElementById(`bar-${i}`);
+      bar2 = document.getElementById(`bar-${i + 1}`);
 
       if (bar1 && bar2) {
         bar1.style.backgroundColor = "#2AA7E1";
